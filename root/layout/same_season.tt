@@ -1,0 +1,26 @@
+﻿[% USE date %]
+<section id="chapters">
+            <div class="box-title">
+            <h3>Same season</h3>
+        </div>
+    <div id="instruction_video">
+        [% i=1 %]
+        [% FOREACH episode = same_season.items %]
+            [% IF episode.metadata.unique_id != program.unique_id &&  !episode.metadata.main_display %]
+            <div class="chapter-list" title="[% date.format(episode.published.epoch, '%d %b %Y %H:%M', 'nb_NO') %]">
+            	<a href="[% c.uri_for('/view', episode.metadata.unique_id ) %]">
+                	<img class="hidden-phone" alt="[% chapter.description %]" src="[% episode.thumbnails.url %]" width="144" height="81" />
+                	<h2>
+                        [% episode.title %]
+                 	</h2>
+             	</a>
+             	<p>[% episode.summary %] </p>
+             	<p> Published: [% date.format(episode.published.epoch, '%d %b %Y %H:%M', 'nb_NO') %]</p>
+             	
+             	<p class="clearfix"></p>
+             </div>
+            [% END %]
+        [% END %]
+    </div>
+    <div class="clearfix"></div>
+</section>

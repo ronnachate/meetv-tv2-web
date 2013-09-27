@@ -1,0 +1,118 @@
+/*
+ * global menu fixes
+ */
+
+#global_menu_children_sites .selected a { background: url("../images/combined-sprite.png?r=1001") no-repeat scroll 50% -15px transparent; padding-bottom: 13px; zoom: 1; }
+*+html #global_menu_children_sites .selected a { background: url("../images/combined-sprite.png?r=1001") no-repeat scroll 50% -10px transparent; padding-bottom: 10px; }
+#global_menu_children_sites .selected a:hover { border-bottom: 0; }
+#global_menu .no-children #global_menu_children_sites { padding-top: 2px}
+#global_menu h2 a { left: 169px; }
+*+html #global_menu h2 a { left: 0; }
+/* house fix */
+#gm_startsiden.selected:hover a { padding-top: 5px !important; }
+*+html #gm_hvordan .i { top: 2px; }
+*+html #gm_hvordan:hover .i { top: 7px !important; }
+
+.pagination span.current,
+.pagination a,
+.carousel,
+.box,
+.slide-thumbs,
+#global_footer,
+#hits_counter,
+.box .box-body, 
+.box .box-title,
+.box .box-content,
+.box-tabs a {
+    zoom: 1;
+    position: relative;
+    behavior: url(/static/css/PIE/PIE.htc);
+}
+
+/* Fix doctype on IE7 */
+*+html #startsiden_wrapper { position: relative; zoom: 1; }
+
+/* ie tweaks */
+*+html .fluid-button { display: inline; }
+.fluid-button:active .br { top: 1px\0/; right: -1px\0/; } /* ie8 moves the button */
+*+html .fluid-button:active .br { top: 1px; right: -1px; } /* ie7 as well */
+*+html .bt { top: 7px; white-space: nowrap; }
+
+.fluid-button:active { top: -1px\0/; left: -1px\0/;} 
+
+/*
+ * list fixes
+ */
+.box .box-content ul { list-style: disc outside none; }
+.box .box-content ol { list-style: decimal outside none; margin: 0 0 0 23px; }
+.nav-box .box-content ul { list-style: none !important; }
+
+/*
+ * filter box hax
+ */
+.filter-box .box-content .filters a {
+    -pie-lazy-init:true;
+    behavior: url(/static/css/PIE/PIE.htc);
+}
+.filter-box .box-content .filters a:active {
+    -pie-background: linear-gradient(top, rgba(84,82,76,1) 0%,rgba(84,82,76,1) 1%,rgba(136,132,123,1) 16%,rgba(143,138,129,1) 78%,rgba(143,138,129,1) 100%);
+}
+.filter-box .box-content .filters .selected a {
+    zoom: 1;
+    position: relative;
+    -pie-background: linear-gradient(top, #4a4a4a 0%, #4a4a4a 1%,#6c6c6c 16%,#787878 78%,#6f6f6f 100%);
+}
+
+/*
+ * tabbed boxes hax
+ */
+.box-tabs a {
+    padding: 0 11px;
+    line-height: 16px;
+    -pie-lazy-init: true;
+    -pie-watch-ancestors: 1;
+}
+.red-version .box-tabs .tab-active a {
+    border-top: 1px solid #7e1711;
+    -pie-background: linear-gradient(top, #7e1711 0%,#d1271c 15%,#dc291e 100%); /* W3C */
+    -pie-lazy-init: true;
+}
+.gray-version .box-tabs .tab-active a {
+    border-top: 1px solid #3b3b3b;
+    -pie-background: linear-gradient(top, #3b3b3b 0%,#686868 15%,#777777 100%); /* W3C */
+    -pie-lazy-init: true;
+}
+.box .box-tabs a:hover {
+    -pie-lazy-init:true;
+}
+.box .box-tabs a.clicked {
+    border-top: 1px solid #48463f;
+    -pie-background: linear-gradient(top, #48463f 0%,#7f7a6f 15%,#777777 100%); /* W3C */
+    color: #fefefe;
+    -pie-lazy-init: true;
+}
+.big-version .box-tabs a {
+    font-size: 12px;
+    height: 26px;
+    line-height: 22px;
+}
+#global_footer {
+    -pie-poll: true;
+}
+
+/* IE rgba hack */
+.flex-caption { background:none; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000); zoom: 1; }
+
+/* FOR IE 7-8 only*/
+.flex-control-nav {
+    display: none;
+}
+.dropdown li a {
+    zoom: 1;
+    position: relative;
+}
+.dropdown li.selected {
+    color: #313131 !important;
+}
+.hidden { visibility: visible; }
+.videolength { filter: alpha(opacity = 75); }  

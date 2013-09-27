@@ -1,0 +1,18 @@
+---
+name: TV2 Sample
+default_view: Web
+using_frontend_proxy : 1
+
+View::Web:
+    INCLUDE_PATH:
+        - __path_to(root)__
+
+
+Static::Simple:
+    include_path:
+        - __path_to(root)__
+
+Model::TV2:
+    vipr_ws_client_args:
+        base_url: http://192.168.40.136:3002/v1
+

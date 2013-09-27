@@ -1,0 +1,11 @@
+<aside id="kategorier_nav" class="span2 sidebar hidden-phone" style="float: left;">
+    <nav class="category-nav">
+        <ul id="kategorier" class="dropdown">
+        [% FOREACH category = categories -%]
+            <li>
+                <a href="[% c.uri_for('/category', category ) %]"><span class="cate_[% category%]"></span>[% category.ucfirst.replace('-', ' ') %]</a>
+            </li>
+        [% END %]
+        </ul>
+    </nav>
+</aside>

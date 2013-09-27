@@ -1,0 +1,48 @@
+[%- IF no_wrapper %]
+[%- content -%]
+[% ELSE %]
+<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://opengraphprotocol.org/schema/">
+<head>
+    <title>Nrk Sample page</title>
+    <!-- META tag -->
+    <!-- END OpenGraph tag -->
+    <link rel="shortcut icon" href="[% c.uri_for('/static/images/favicon.ico') %]" />
+
+    <!-- We make css by compiling LESS files, You NEED to compile in on your local server first -->
+    <link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/css/main.css') %][% revision %]">
+    <!-- media queries css -->
+    <link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/css/responsive.css') %][% revision %]">
+
+    <!-- CSS Hack --> 
+    <style type="text/css">
+        @-moz-document url-prefix() {
+            #searchform {
+                padding-right: 40px;
+            }
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js" type="text/javascript"></script> 
+
+</head>
+<body>
+ 
+    <div class="container">
+        <div id="wrapper">
+            <div id="main_wrap" class="row" style="width: 1400px">
+             [% PROCESS layout/navigation.tt %]
+                <div id="startsiden_wrapper">
+                    <div id="content_wrap" class="cf">
+                        [% content %]       
+                    </div>
+                </div><!-- /startsiden_wrapper -->    
+                <div style="clear: both;"></div>
+            </div><!-- /row -->
+        </div><!-- /wrapper -->
+    </div><!-- /container -->
+
+</body>
+</html>
+[% END %]

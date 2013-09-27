@@ -1,0 +1,10 @@
+<nav id="slide_nav">
+	<ul id="categories" class="dark-gray">
+		<li><span class="sub-header">Category</span></li>
+		[% FOREACH category = categories -%]
+            <li>
+                <a href="[% c.uri_for('/category', category ) %]">[% category.ucfirst.replace('-', ' ') %]</a> 
+            </li>     
+        [% END %]
+	</ul>
+</nav>

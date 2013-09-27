@@ -1,0 +1,37 @@
+[% USE date %]
+    ﻿[% DEFAULT c.req.params.page = 1 %]
+<h3 class="section-header"><a title="[% title %]">Sample page for NRK [% IF c.req.params.available > 0 %][ Available only] [% END %]</a>  <span> <a href="[% toggle_link %]" style="float: right;">Toggle Available</a>  </span></h3>
+[% IF resultset.result.entries > 0 %]
+    <section id="suggest_category">    
+        <div id="latest_viprogram" class="category cf">     
+            [% FOREACH program = resultset.items %]
+                <article class="video[% IF (loop.count % 4) == 0 || loop.count > loop.max %] last[% END %]">
+                    <span class="video-wrap thumbnail-180">
+                        <a title="[% program.title %]" href="[% c.uri_for('/view', program.metadata.unique_id ) %]">
+                            <img class="thumbnails" alt="[% program.title %]" src="[% program.thumbnails.url %]"/>
+                        </a>
+                        <a title="[% program.title %] " href="[% c.uri_for('/view', program.metadata.unique_id ) %]" class="play-icon"></a>
+                    </span>
+                    <h3 title="[% program.title %]"><a href="[% c.uri_for('/view', program.metadata.unique_id ) %]">[% program.title | truncate(55, '...') %]</a></h3>
+                    <p class="views"><span class="posted-date align-right hidden-phone"> Published: [% date.format(program.published.epoch, '%d %b %Y %H:%M', 'nb_NO') %]</span></p>
+                </article>
+            [% END %]
+        </div>  
+    </section>
+
+<div id="paginator_wrap">
+    <nav class="pagination">       
+        <span class='paginationitem intro'>[% index %]Side [% c.req.params.page %] av [% resultset.pager.last_page %]</span>
+        [% IF resultset.pager.last_page > 1 %] 
+            [% IF c.req.params.page > 1 %]
+                <a href="[%c.req.uri_with({page => c.req.params.page - 1} )%]" class="paginator_arrow paginationitem">&lt; Forrige</a>
+            [% END %]
+            [% IF resultset.pager.last_page > c.req.params.page %]
+                <a href="[%c.req.uri_with({page => c.req.params.page + 1} )%]" class="paginator_arrow paginationitem">Neste &gt;</a>
+            [% END %]
+        [% END %]
+    </nav>
+</div>
+[% ELSE %]
+     No item
+[% END %]

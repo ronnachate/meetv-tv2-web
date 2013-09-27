@@ -1,0 +1,48 @@
+
+Installation
+============
+
+  perl Makefile.PL # This will try to install dependencies via CPAN locally, 
+  make             # however you really want to install the corresponding 
+                   # Debian packages instead
+    or
+
+  # Install only debian dependencies of the currently packaged version of 
+  # Video::Hvordan to avoid conflicts with your checkout and the package
+  sudo apt-get -y install \
+    `apt-cache depends cpan-libvideo-hvordan-web-perl|grep -v Depends:|tr -d '\n'`
+
+  Locales
+  -------
+
+  On a pristine Debian system, you might need to enable nb_NO.UTF8 by running 
+  'dpkg-reconfigure locales'
+
+
+  Test dependencies
+  -----------------
+
+  # It would be nice to have an easy way to install test dependencies but right 
+  # now this is the only way (And without Contents.gz see: 
+  # https://bugs.startsiden.no/browse/DR-4774 this is slightly error-prone)
+
+  grep test_requires Makefile.PL | cut -f2 -d" " | tr -cd 0-9A-Za-z:\\n | \
+    perl -MDebian::AptContents -wlne 'print; my $m = $_; 
+      my $c = Debian::AptContents->new({homedir=>"$ENV{HOME}/.dh-make-perl"}); 
+      my $p = $c->find_perl_module_package($m) || mod2deb($m); 
+      print `sudo apt-get install cpan-$p || ^cpan-^^`;
+      sub mod2deb { $_ = lc shift; s/::/-/g; return "lib$_-perl"; }'  
+    
+
+Testing
+=======
+
+  make test 
+    or
+  prove # Will run tests in t/
+
+Running
+=======
+
+  Run script/video_hvordan_web_server.pl to start the application..
+
