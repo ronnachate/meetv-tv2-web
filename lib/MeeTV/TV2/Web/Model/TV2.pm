@@ -57,10 +57,15 @@ has 'available' => (
     is      => 'rw',
 );
 
+has 'vipr_ws_client_args' => (
+    is => 'ro',
+    isa => 'HashRef',
+);
+
 
 sub _build_client {
     my ($self) = @_;
-    return Vipr::WS::Client->new;
+    return Vipr::WS::Client->new($self->vipr_ws_client_args);
 }
 
 
@@ -74,14 +79,11 @@ Returns a Video::Hvordan::Web::View::Helper::Paginator object with results
 
 =cut
 
-sub programs {
+sub shows {
     my ($self, $args) = @_;
     $args->{page} ||= $self->current_page;
     $args->{rows} = 28;
-    if( $self->available ) {
-        push @{$args->{mtag}}, 'program-rights';
-    }
-    return $self->client->programs($args);
+    return $self->client->shows($args);
 }
 
 

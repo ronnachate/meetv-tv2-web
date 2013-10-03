@@ -1,4 +1,4 @@
-package Vipr::Nrk::Web;
+package MeeTV::TV2::Web;
 
 use strict;
 use warnings;
@@ -30,7 +30,7 @@ our $VERSION = '0.01';
 # with an external configuration file acting as an override for
 # local deployment.
 
-__PACKAGE__->config( name => 'Vipr::Nrk::Web' );
+__PACKAGE__->config( name => 'MeeTV::TV2::Web' );
 
 
 # Start the application
@@ -39,11 +39,11 @@ __PACKAGE__->setup();
 
 =head1 NAME
 
-Vipr::Nrk::Web - Catalyst based application
+MeeTV::TV2::Web - Catalyst based application
 
 =head1 SYNOPSIS
 
-    script/vipr_nrk_web_server.pl
+    script/meetv_tv2_web_server.pl
 
 =head1 DESCRIPTION
 
@@ -51,7 +51,7 @@ Vipr::Nrk::Web - Catalyst based application
 
 =head1 SEE ALSO
 
-L<Vipr::Nrk::Web::Controller::Root>, L<Catalyst>
+L<MeeTV::TV2::Web::Controller::Root>, L<Catalyst>
 
 =head1 AUTHOR
 

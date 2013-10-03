@@ -14,5 +14,5 @@ Static::Simple:
 
 Model::TV2:
     vipr_ws_client_args:
-        base_url: http://192.168.40.136:3002/v1
+        base_url: http://192.168.40.136:3000/v1
 

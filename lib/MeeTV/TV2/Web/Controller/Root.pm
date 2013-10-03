@@ -30,8 +30,8 @@ Catalyst Controller.
 sub begin :Private {
     my ( $self, $c ) = @_;
     $c->req->params->{page} ||= 1;
-    $c->model('Nrk')->current_page( $c->req->params->{page} );
-    $c->model('Nrk')->available( $c->req->params->{available} );
+    $c->model('TV2')->current_page( $c->req->params->{page} );
+    $c->model('TV2')->available( $c->req->params->{available} );
     
 }
 
@@ -43,8 +43,7 @@ Start page for Hvordan
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
-    $c->stash->{resultset}   = $c->model('Nrk')->programs({ mtag => ['program-main-display'] });
-    $c->stash->{categories}  = $c->model('Nrk')->all_categories;
+    $c->stash->{resultset}   = $c->model('TV2')->shows();
     $c->stash->{toggle_link} = $self->_toggle_link($c);
 }
 
@@ -57,7 +56,7 @@ Play specific video
 sub view :Path('view') Args(1) {
     my ( $self, $c, $id ) = @_;
     my $mtag = "program-unique_id-$id";
-    my $program = $c->model('Nrk')->programs({ mtag => $mtag })->first;
+    my $program = $c->model('TV2')->programs({ mtag => $mtag })->first;
     $c->stash->{program} = $program;
     if( $program->type eq 'episode') {
         $c->stash->{same_season} = $program->same_season({ rows => 20 });
@@ -75,7 +74,7 @@ sub category :Path('category') Args(1) {
     my ( $self, $c, $category_id ) = @_;
     my $mtag = "program-category_id-$category_id";
     $c->stash->{category_id} = $category_id;
-    $c->stash->{resultset} = $c->model('Nrk')->programs({ mtag => ['program-main-display', $mtag] });
+    $c->stash->{resultset} = $c->model('')->programs({ mtag => ['program-main-display', $mtag] });
     $c->stash->{categories} = $c->model('Nrk')->all_categories;
     $c->stash->{toggle_link} = $self->_toggle_link($c);
 }
@@ -89,7 +88,7 @@ Search program with specific string
 sub search :Path('sok') {
     my ( $self, $c ) = @_;
     my $query = $c->req->params->{q};
-    $c->stash->{resultset} = $c->model('Nrk')->search_programs($query);
+    $c->stash->{resultset} = $c->model('TV2')->search_programs($query);
 }
 
 
