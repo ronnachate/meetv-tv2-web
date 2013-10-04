@@ -5,7 +5,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://opengraphprotocol.org/schema/">
 <head>
-    <title>Nrk Sample page</title>
+    <title>TV2 Sample page</title>
     <!-- META tag -->
     <!-- END OpenGraph tag -->
     <link rel="shortcut icon" href="[% c.uri_for('/static/images/favicon.ico') %]" />
