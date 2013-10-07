@@ -44,7 +44,6 @@ Start page for Hvordan
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
     $c->stash->{resultset}   = $c->model('TV2')->shows();
-    $c->stash->{toggle_link} = $self->_toggle_link($c);
 }
 
 =head2 view
@@ -95,23 +94,12 @@ Search program with specific string
 
 =cut
 
-sub search :Path('sok') {
+sub search :Path('search') {
     my ( $self, $c ) = @_;
     my $query = $c->req->params->{q};
-    $c->stash->{resultset} = $c->model('TV2')->search_programs($query);
+    $c->stash->{assets} = $c->model('TV2')->search_assets($query);
 }
 
-
-sub _toggle_link {
-    my ( $self, $c ) = @_;
-    if( $c->req->params->{available} ) {
-        return $c->req->uri_with( { available => undef} );;
-    }
-    else {
-        return $c->req->uri_with( { available => 1} );;
-    }
-    
-}
 
 =head2 end
 

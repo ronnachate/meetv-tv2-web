@@ -1,6 +1,6 @@
 [% USE date %]
     ﻿[% DEFAULT c.req.params.page = 1 %]
-<h3 class="section-header"><a title="[% title %]">Sample page for TV2 [% IF c.req.params.available > 0 %][ Available only] [% END %]</a>  <span> <a href="[% toggle_link %]" style="float: right;">Toggle Available</a>  </span></h3>
+<h3 class="section-header"><a title="[% title %]">Sample page for TV2</a></h3>
 [% IF resultset.result.entries > 0 %]
     <section id="suggest_category">    
         <div id="latest_viprogram" class="category cf">     

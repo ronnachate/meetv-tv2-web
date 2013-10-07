@@ -119,12 +119,14 @@ Returns a Vipr::Ws::Client::ResultSet object with results
 
 =cut
 
-sub search_programs {
+sub search_assets {
     my ($self, $query) = @_;
-    return $self->programs({
+    my $args = {
         q     => $query,
         rows  => 28,
-    });
+        page  => $self->current_page,
+    };
+    return $self->client->assets($args);
 }
 
 sub all_categories {

@@ -1,0 +1,28 @@
+﻿[% USE date %]
+<div class="breadcrumbs">
+    <a id="home" href="/" title="main">Home</a>
+    <a class="current" href="/show/[% asset.show.id %]" title="[% asset.show.title %]">[% asset.show.title %]</a>
+</div>
+    <br/>
+<section id="chapters">
+            <div class="box-title">
+            <h3>Assets list</h3>
+        </div>
+    <div id="instruction_video">
+        [% i=1 %]
+        [% FOREACH asset = assets.items %]
+            <div class="chapter-list" title="[% asset.title %]">
+            	<a href="[% c.uri_for('/asset', asset.id ) %]">
+                	<img class="hidden-phone" alt="[% asset.description %]" src="[% asset.thumbnails.url %]" width="144" height="81" />
+                	<h2>
+                        [% asset.title %]
+                 	</h2>
+             	</a>
+             	<p>[% asset.summary %] </p>
+             	
+             	<p class="clearfix"></p>
+             </div>
+        [% END %]
+    </div>
+    <div class="clearfix"></div>
+</section>

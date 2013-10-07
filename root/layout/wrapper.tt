@@ -31,10 +31,19 @@
  
     <div class="container">
         <div id="wrapper">
-            <div id="main_wrap" class="row" style="width: 1400px">
+            <div id="main_wrap" class="row">
              [% PROCESS layout/navigation.tt %]
                 <div id="startsiden_wrapper">
                     <div id="content_wrap" class="cf">
+                    	<div id="searchform" class="form form-square-dark-gray form-inactive">
+							<form id="main_searchform" class="form-rounded" method="get" action="/search" name="header_searchform">
+								<div class="form-rounded-small">
+									<input class="input-inactive input-search" type="text" value="TV2..." onblur="if(this.value=='') this.value='TV2...';" onfocus="if(this.value=='TV2...') this.value='';" name="q">
+									<button class="button button-submit" form="main_searchform" type="submit">Search</button>
+									<button class="button button-small-clear" form="main_searchform" type="reset"></button>
+								</div>
+							</form>
+						</div>
                         [% content %]       
                     </div>
                 </div><!-- /startsiden_wrapper -->    
