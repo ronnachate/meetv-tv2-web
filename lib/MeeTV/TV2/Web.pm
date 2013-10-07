@@ -1,4 +1,4 @@
-package Vipr::Nrk::Web;
+package MeeTV::TV2::Web;
 
 use strict;
 use warnings;
@@ -19,7 +19,7 @@ use Catalyst qw/ConfigLoader
                 Browser
                 Unicode::Encoding/;
 
-our $VERSION = '0.69';
+our $VERSION = '0.01';
 
 # Configure the application.
 #
@@ -30,37 +30,20 @@ our $VERSION = '0.69';
 # with an external configuration file acting as an override for
 # local deployment.
 
-__PACKAGE__->config( name => 'Video::Hvordan::Web' );
+__PACKAGE__->config( name => 'MeeTV::TV2::Web' );
 
 
 # Start the application
 __PACKAGE__->setup();
 
 
-=head2 is_mobile
-
-Returns 1 if the user is on a mobile device and mobile is enabled in config, 0 if not
-This behaviour can be overriden with the 'mobile' param given that mobile is
-enabled in config.
-
-=cut
-
-sub is_mobile {
-    my $c = shift;
-    return 0 unless $c->config->{mobile_enabled};
-    return $c->req->param('mobile') if defined $c->req->param('mobile');
-    my $xua = $c->req->header('X-UA-Device');
-    return ($xua && $xua =~ /^mobile/);
-}
-
-
 =head1 NAME
 
-Video::Hvordan::Web - Catalyst based application
+MeeTV::TV2::Web - Catalyst based application
 
 =head1 SYNOPSIS
 
-    script/video_hvordan_web_server.pl
+    script/meetv_tv2_web_server.pl
 
 =head1 DESCRIPTION
 
@@ -68,11 +51,11 @@ Video::Hvordan::Web - Catalyst based application
 
 =head1 SEE ALSO
 
-L<Video::Hvordan::Web::Controller::Root>, L<Catalyst>
+L<MeeTV::TV2::Web::Controller::Root>, L<Catalyst>
 
 =head1 AUTHOR
 
-espen
+yo
 
 =head1 LICENSE
 

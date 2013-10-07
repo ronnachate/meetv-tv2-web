@@ -1,0 +1,23 @@
+[% USE date %]
+<div class="breadcrumbs">
+    <a id="home" href="/" title="main">Home</a>
+    <a class="current" href="/show/[% asset.show.id %]" title="[% asset.show.title %]">[% asset.show.title %]</a>
+</div>
+    <br/>
+<div id="content">
+    <article id="video_content" class="span6 cf">
+        <section id="watch_video" class="video-player">
+            <div class="box-title">
+               <h3>[% asset.title %]</h3>
+           </div>
+            <img src="[% asset.thumbnails.url %]" width="580" height="326">
+
+            <p class="description">[% asset.summary | html %] </p>
+            <p class="description">
+            	<span id="hits_counter" class="align-left">
+            	<a href="[% asset.link %]">[% asset.link %]</a>
+            	</span>
+            </p>
+        </section>
+    </article>
+</div>

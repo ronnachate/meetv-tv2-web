@@ -4,16 +4,16 @@
 [% IF resultset.result.entries > 0 %]
     <section id="suggest_category">    
         <div id="latest_viprogram" class="category cf">     
-            [% FOREACH program = resultset.items %]
+            [% FOREACH show = resultset.items %]
                 <article class="video[% IF (loop.count % 4) == 0 || loop.count > loop.max %] last[% END %]">
                     <span class="video-wrap thumbnail-180">
-                        <a title="[% program.title %]" href="[% c.uri_for('/view', program.metadata.unique_id ) %]">
-                            <img class="thumbnails" alt="[% program.title %]" src="[% program.thumbnails.url %]"/>
+                        <a title="[% show.title %]" href="[% c.uri_for('/show', show.id ) %]">
+                            <img class="thumbnails" alt="[% show.title %]" src="[% show.thumbnails.url %]"/>
                         </a>
-                        <a title="[% program.title %] " href="[% c.uri_for('/view', program.metadata.unique_id ) %]" class="play-icon"></a>
+                        <a title="[% show.title %] " href="[% c.uri_for('/show', show.id ) %]" class="play-icon"></a>
                     </span>
-                    <h3 title="[% program.title %]"><a href="[% c.uri_for('/view', program.metadata.unique_id ) %]">[% program.title | truncate(55, '...') %]</a></h3>
-                    <p class="views"><span class="posted-date align-right hidden-phone"> Published: [% date.format(program.published.epoch, '%d %b %Y %H:%M', 'nb_NO') %]</span></p>
+                    <h3 title="[% show.title %]"><a href="[% c.uri_for('/show', show.id ) %]">[% show.title | truncate(55, '...') %]</a></h3>
+                    <p class="views"><span class="posted-date align-right hidden-phone"> Published: [% date.format(show.published.epoch, '%d %b %Y %H:%M', 'nb_NO') %]</span></p>
                 </article>
             [% END %]
         </div>  

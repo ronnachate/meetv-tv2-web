@@ -49,19 +49,29 @@ sub index :Path :Args(0) {
 
 =head2 view
 
-Play specific video
+detail for specific show
 
 =cut
 
-sub view :Path('view') Args(1) {
+sub show :Path('show') Args(1) {
     my ( $self, $c, $id ) = @_;
-    my $mtag = "program-unique_id-$id";
-    my $program = $c->model('TV2')->programs({ mtag => $mtag })->first;
-    $c->stash->{program} = $program;
-    if( $program->type eq 'episode') {
-        $c->stash->{same_season} = $program->same_season({ rows => 20 });
-    }
+    my $show = $c->model('TV2')->show_with_id($id);
+    $c->stash->{show} = $show;
+    $c->stash->{assets} = $show->assets;
 }
+
+=head2 asset
+
+detail for specific asset
+
+=cut
+
+sub asset :Path('asset') Args(1) {
+    my ( $self, $c, $id ) = @_;
+    my $asset = $c->model('TV2')->asset_with_id($id);
+    $c->stash->{asset} = $asset;
+}
+
 
 =head2 category
 

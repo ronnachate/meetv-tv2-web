@@ -72,7 +72,7 @@ sub _build_client {
 
 =head1 METHODS
 
-=head2 programs (<HashRef>)
+=head2 shows (<HashRef>)
 
 Performas a search against the Xstream video feed
 Returns a Video::Hvordan::Web::View::Helper::Paginator object with results
@@ -84,6 +84,31 @@ sub shows {
     $args->{page} ||= $self->current_page;
     $args->{rows} = 28;
     return $self->client->shows($args);
+}
+
+=head2 show_with_id (<HashRef>)
+
+Performas a search against the Xstream video feed
+Returns a Video::Hvordan::Web::View::Helper::Paginator object with results
+
+=cut
+
+sub show_with_id {
+    my ($self, $id) = @_;
+    return $self->client->show_with_id($id);
+}
+
+
+=head2 asset_with_id (<HashRef>)
+
+Performas a search against the Xstream video feed
+Returns a Video::Hvordan::Web::View::Helper::Paginator object with results
+
+=cut
+
+sub asset_with_id {
+    my ($self, $id) = @_;
+    return $self->client->asset_with_id($id);
 }
 
 
